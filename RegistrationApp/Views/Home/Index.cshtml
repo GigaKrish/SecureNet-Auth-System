@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Registration Form";
+}
+
+<!-- Link to external CSS -->
+<link rel="stylesheet" href="~/Content/registration.css" />  <!-- Use ~/css/registration.css if using ASP.NET Core -->
+
+<div class="registration-container">
+    <h2>Registration Page</h2>
+
+    <form id="regForm">
+        <label>Name</label>
+        <input type="text" name="Name" required />
+
+        <label>Username</label>
+        <input type="text" name="UserName" required />
+
+        <label>Email</label>
+        <input type="email" name="Email" required />
+
+        <label>Password</label>
+        <input type="password" name="Password" required />
+
+        <label>Age</label>
+        <input type="number" name="Age" required />
+
+        <label>Gender</label>
+        <select name="Gender" required>
+            <option value="">--Select--</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="DateOfBirth">Date of Birth</label>
+        <input type="date" id="DateOfBirth" name="DateOfBirth" required />
+
+        @*<label>CAPTCHA</label>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span id="captchaText"></span>
+            <button type="button" onclick="refreshCaptcha()">↻</button>
+        </div>
+        <input type="text" name="CaptchaInput" id="CaptchaInput" required />*@
+        <!-- CAPTCHA -->
+        <div class="mb-3">
+            <label class="form-label">Enter CAPTCHA</label>
+            <div class="d-flex align-items-center mb-2">
+                <span id="captchaText" class="badge bg-primary fs-5 me-2">@ViewBag.Captcha</span>
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="refreshCaptcha()">🔄</button>
+            </div>
+            <input type="text" name="CaptchaInput" class="form-control" required />
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <a href="@Url.Action("Login", "User")">Already have an account? Login</a>
+</div>
+
+<hr />
+<h3>Registered Users</h3>
+<ul id="userList"></ul>
+
+@section scripts {
+    <script src="~/Scripts/register.js"></script>
+}

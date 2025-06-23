@@ -1,0 +1,15 @@
+﻿@model RegistrationAppNoEF.Models.User
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Welcome, @Model.Name!</h2>
+
+<p><strong>Username:</strong> @Model.UserName</p>
+<p><strong>Email:</strong> @Model.Email</p>
+<p><strong>Age:</strong> @Model.Age</p>
+<p><strong>Gender:</strong> @Model.Gender</p>
+<p><strong>DOB:</strong>@Model.DateOfBirth</p>
+
+<br />
+<a href="@Url.Action("Logout", "User")">Logout</a>
